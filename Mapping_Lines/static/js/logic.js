@@ -1,6 +1,6 @@
 // ---------------- Add a Map Object -------------------
 // Create the map object with a center and zoom level.
-let map = L.map('mapid').setView([[36.1733, -120.1794]], 7);
+let map = L.map('mapid').setView([36.1733, -120.1794], 7);
 
 
 // ----------------- Add Tile Layer --------------------
