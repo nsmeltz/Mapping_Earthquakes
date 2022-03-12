@@ -24,7 +24,7 @@ let baseMaps = {
 let map = L.map('mapid', {
   center: [30, 30],
   zoom: 3,
-  layers: [streets]
+  layers: [dark]
 })
 
 // Pass our map layers into our layers control and add the layers control to the map.
@@ -35,8 +35,9 @@ L.control.layers(baseMaps).addTo(map);
 
 // Use this link to get the geojson data.
 var airportData = "data/majorAirports.json";
+var torontoRoutes = "data/torontoRoutes.json";
 
-// use d3 to grab our GeoJSON data.
+// Plot markers and popup for each airport
 d3.json(airportData).then(function(data) {
   console.log(data);
   L.geoJSON(data, {
@@ -46,6 +47,13 @@ d3.json(airportData).then(function(data) {
   }).addTo(map);
 });
 
-// // Creating a GeoJSON layer with the retrieved data.
-// L.geoJSON(data).addTo(map);
-// })
+// Plot all routes from Toronto
+// Grabbing our GeoJSON data.
+d3.json(torontoRoutes).then(function(data) {
+  console.log(data);
+  // Creating a GeoJSON layer with the retrieved data.
+  L.geoJSON(data, {
+    weight: 2,
+    color: "yellow"
+  }).addTo(map);
+});
